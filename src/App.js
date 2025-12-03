@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        my firt component
+        Hello world
         <MyComponent></MyComponent>
       </div>
     );
