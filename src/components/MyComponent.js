@@ -10,26 +10,29 @@ class MyComponent extends React.Component {
     adress: "Da Nang",
     age: 24,
   };
-  handleClick = (event) => {
-    console.log(">> click me my button");
-    console.log(" My name is ", this.state.name);
 
+  handleOnChangeInput = (event) => {
     this.setState({
-      name: "Nam", //cập nhật tên mới thay thế cho tên ban đầu
+      name: event.target.value,
     });
   };
 
-  handleOnMoverOver = (event) => {
-    console.log(event.pageX);
+  handleOnSubmit = (event) => {
+    event.prevenDefault();
+    console.log(this.state);
   };
 
   render() {
     return (
       <div>
-        my name is {this.state.name}
-        <button onClick={this.handleClick}>Click me</button>
-        {/* cach khac <button onClick={(event) => {this.handleClick(event)}}>Click me</button> */}
-        <button onMouseOver={this.handleOnMoverOver}>Hover me</button>
+        my name is {this.state.name} and I'm {this.state.age}
+        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+          <input
+            type="text"
+            onChange={(event) => this.handleOnChangeInput(event)}
+          ></input>
+          <button>Submit</button>
+        </form>
       </div>
     );
   }
